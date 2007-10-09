@@ -1,4 +1,4 @@
-Summary: 	LCDproc displays real-time system information on a 20x4 backlit LCD.
+Summary: 	LCDproc displays real-time system information on a 20x4 backlit LCD
 Name:   	lcdproc	
 Version:	0.5.0
 Release:	%mkrel 1
