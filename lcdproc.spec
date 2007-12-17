@@ -7,7 +7,6 @@ Url:       	http://lcdproc.omnipotent.net
 Group:     	Monitoring	
 Source:    	%{name}-%{version}.tar.bz2
 Source1:	LCDd.init
-BuildRoot: 	%{_tmppath}/%{name}-buildroot
 Requires(pre):		rpm-helper
 Requires(preun):	rpm-helper
 BuildRequires:	libncurses-devel docbook-utils-pdf
