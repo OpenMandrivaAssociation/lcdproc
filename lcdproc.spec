@@ -76,7 +76,7 @@ install clients/examples/*.pl $RPM_BUILD_ROOT%{_bindir}
 install -d		$RPM_BUILD_ROOT%{_sysconfdir}/lcdproc
 install LCDd.conf 	$RPM_BUILD_ROOT%{_sysconfdir}/lcdproc/LCDd.conf
 # fix path to drivers
-perl -pi -e 's|DriverPath=.*/|DriverPath=%{_libdir}/lcdproc/|' $RPM_BUILD_ROOT%{_sysconfdir}/lcdproc/LCDd.conf
+perl -pi -e 's|DriverPath=.*/|DriverPath=/usr/lib/lcdproc/|' $RPM_BUILD_ROOT%{_sysconfdir}/lcdproc/LCDd.conf
 # remove unwanted conf file (not used in initscript)
 rm -vf $RPM_BUILD_ROOT%{_sysconfdir}/LCDd.conf
 touch scripts/lcdproc.conf  	$RPM_BUILD_ROOT%{_sysconfdir}/lcdproc/lcdproc.conf
