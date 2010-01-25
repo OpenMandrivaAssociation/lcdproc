@@ -5,7 +5,7 @@
 
 Name:		lcdproc	
 Version:	0.5.2
-Release:	%mkrel 4
+Release:	%mkrel 5
 Summary: 	Displays real-time system information on a 20x4 backlit LCD
 License:	GPL
 URL:            http://lcdproc.omnipotent.net/
@@ -43,7 +43,8 @@ See also http://lcdproc.omnipotent.net.
 %{__perl} -pi -e 's:../../../libirman-0.4.1b/irman.h:%{_includedir}/irman.h:g' server/drivers/irmanin.c
 
 %build
-%{configure2_5x} --disable-dependency-tracking \
+unset LDFLAGS
+./configure --disable-dependency-tracking \
                  --enable-libusb \
                  --enable-drivers=all \
                  --enable-seamless-hbars \
@@ -73,6 +74,10 @@ install clients/examples/*.pl $RPM_BUILD_ROOT%{_bindir}
 # conf files
 install -d		$RPM_BUILD_ROOT%{_sysconfdir}/lcdproc
 install LCDd.conf 	$RPM_BUILD_ROOT%{_sysconfdir}/lcdproc/LCDd.conf
+# fix path to drivers
+perl -pi -e 's|DriverPath=.*/|DriverPath=%{_libdir}/lcdproc/|' $RPM_BUILD_ROOT%{_sysconfdir}/lcdproc/LCDd.conf
+# remove unwanted conf file (not used in initscript)
+rm -vf $RPM_BUILD_ROOT%{_sysconfdir}/LCDd.conf
 touch scripts/lcdproc.conf  	$RPM_BUILD_ROOT%{_sysconfdir}/lcdproc/lcdproc.conf
 echo "-s localhost -p 13666 C M X U P S" > \
 			$RPM_BUILD_ROOT%{_sysconfdir}/lcdproc/lcdproc.conf
@@ -106,7 +111,6 @@ rm -rf $RPM_BUILD_ROOT
 %{_sbindir}/*
 %dir %{_sysconfdir}/lcdproc
 %config(noreplace) %{_sysconfdir}/lcdproc/*
-%config(noreplace) %{_sysconfdir}/LCDd.conf
 %config(noreplace) %{_sysconfdir}/lcdexec.conf
 %config(noreplace) %{_sysconfdir}/lcdproc.conf
 %config(noreplace) %{_sysconfdir}/lcdvc.conf
