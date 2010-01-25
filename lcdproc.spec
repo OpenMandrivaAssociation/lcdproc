@@ -69,6 +69,7 @@ install -d 		$RPM_BUILD_ROOT%{_initrddir}
 install %{SOURCE1}	$RPM_BUILD_ROOT%{_initrddir}/LCDd
 
 # Move examples in %_bindir like previous release
+install -d              $RPM_BUILD_ROOT%{_bindir}
 install clients/examples/*.pl $RPM_BUILD_ROOT%{_bindir}
 
 # conf files
