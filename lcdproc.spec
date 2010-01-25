@@ -62,7 +62,7 @@ unset LDFLAGS
 
 %install
 %{__rm} -rf %{buildroot}
-%{makeinstall_std}
+%{makeinstall}
 
 # init
 install -d 		$RPM_BUILD_ROOT%{_initrddir}
