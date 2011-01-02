@@ -4,14 +4,15 @@
 # ftdi library in version 0.7
 
 Name:		lcdproc	
-Version:	0.5.2
-Release:	%mkrel 6
+Version:	0.5.3
+Release:	%mkrel 1
 Summary: 	Displays real-time system information on a 20x4 backlit LCD
-License:	GPL
-URL:            http://lcdproc.omnipotent.net/
+License:	GPLv2+
+URL:    	http://lcdproc.omnipotent.net/
 Group:     	Monitoring	
-Source0:    	http://downloads.sourceforge.net/lcdproc/lcdproc-0.5.2.tar.gz
+Source0:    	http://downloads.sourceforge.net/%{name}/%{name}-%{version}.tar.gz
 Source1:	LCDd.init
+Patch0: 	slow-down-imonlcd-0038.patch
 Requires(pre):	rpm-helper
 Requires(preun): rpm-helper
 BuildRequires:	docbook-utils-pdf
@@ -41,6 +42,7 @@ See also http://lcdproc.omnipotent.net.
 %prep
 %setup -q
 %{__perl} -pi -e 's:../../../libirman-0.4.1b/irman.h:%{_includedir}/irman.h:g' server/drivers/irmanin.c
+%apply_patches
 
 %build
 unset LDFLAGS
