@@ -1,0 +1,14 @@
+diff -ru lcdproc-0.5.3_old/server/drivers/imonlcd.c lcdproc-0.5.3_new/server/drivers/imonlcd.c
+--- lcdproc-0.5.3_old/server/drivers/imonlcd.c	2009-06-20 15:48:34.000000000 +0200
++++ lcdproc-0.5.3_new/server/drivers/imonlcd.c	2011-01-02 14:38:02.274559931 +0100
+@@ -1184,6 +1184,10 @@
+ 
+ 	if (err <= 0)
+ 		printf("%s: error writing to file descriptor: %d", "imon", err);
++
++	/* slow down device commands, because the device can't handle newer speeds */
++	if (p->protocol == PROTOCOL_0038)
++		usleep(3000);
+ }
+ 
+ 
