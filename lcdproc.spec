@@ -5,7 +5,7 @@
 
 Name:		lcdproc	
 Version:	0.5.3
-Release:	%mkrel 1
+Release:	2
 Summary: 	Displays real-time system information on a 20x4 backlit LCD
 License:	GPLv2+
 URL:    	http://lcdproc.omnipotent.net/
