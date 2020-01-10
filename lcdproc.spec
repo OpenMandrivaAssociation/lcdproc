@@ -42,7 +42,7 @@ See also http://lcdproc.omnipotent.net.
 %prep
 %setup -q
 %{__perl} -pi -e 's:../../../libirman-0.4.1b/irman.h:%{_includedir}/irman.h:g' server/drivers/irmanin.c
-%apply_patches
+%autopatch -p1
 
 %build
 unset LDFLAGS
