@@ -8,7 +8,7 @@ Version:	0.5.3
 Release:	2
 Summary: 	Displays real-time system information on a 20x4 backlit LCD
 License:	GPLv2+
-URL:    	http://lcdproc.omnipotent.net/
+URL:    	https://lcdproc.omnipotent.net/
 Group:     	Monitoring	
 Source0:    	http://downloads.sourceforge.net/%{name}/%{name}-%{version}.tar.gz
 Source1:	LCDd.init
